@@ -20,19 +20,14 @@
     
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
-        
-        NSLog(@"%@", tweets);
-        NSLog(@"%lu@", tweets.count);
-//        NSLog(<#NSString * _Nonnull format, ...#>)
-        
         if (tweets) {
-            NSLog(@"Successfully loaded home timeline");
+            NSLog(@"😎😎😎 Successfully loaded home timeline");
             for (NSDictionary *dictionary in tweets) {
                 NSString *text = dictionary[@"text"];
                 NSLog(@"%@", text);
             }
         } else {
-            NSLog(@"Error getting home timeline: %@", error.localizedDescription);
+            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
     }];
 }

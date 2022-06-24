@@ -7,9 +7,8 @@
 //
 
 #import "APIManager.h"
-//#import "Tweet.h"
 
-static NSString * const baseURLString = @"https://api.twitter.com/";
+static NSString * const baseURLString = @"https://api.twitter.com";
 
 @interface APIManager()
 
@@ -27,7 +26,10 @@ static NSString * const baseURLString = @"https://api.twitter.com/";
 }
 
 - (instancetype)init {
+    
     NSURL *baseURL = [NSURL URLWithString:baseURLString];
+    
+    // TODO: fix code below to pull API Keys from your new Keys.plist file
     
     NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
@@ -42,14 +44,10 @@ static NSString * const baseURLString = @"https://api.twitter.com/";
     if ([[NSUserDefaults standardUserDefaults] stringForKey:@"consumer-secret"]) {
         secret = [[NSUserDefaults standardUserDefaults] stringForKey:@"consumer-secret"];
     }
-
-    self = [super initWithBaseURL:baseURL consumerKey:key consumerSecret:secret];
     
+    self = [super initWithBaseURL:baseURL consumerKey:key consumerSecret:secret];
     if (self) {
-        NSLog(@"Horray, it worked!");
-    }
-    else {
-        NSLog(@"Here is the error... (@ Line 53)");
+        
     }
     return self;
 }
@@ -64,9 +62,9 @@ static NSString * const baseURLString = @"https://api.twitter.com/";
        [[NSUserDefaults standardUserDefaults] setValue:data forKey:@"hometimeline_tweets"];
 
        completion(tweetDictionaries, nil);
-
+       
    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-
+       
        NSArray *tweetDictionaries = nil;
        
        // Fetch tweets from cache if possible
@@ -76,7 +74,6 @@ static NSString * const baseURLString = @"https://api.twitter.com/";
        }
        
        completion(tweetDictionaries, error);
-       
    }];
 }
 

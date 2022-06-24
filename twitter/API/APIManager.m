@@ -7,6 +7,7 @@
 //
 
 #import "APIManager.h"
+//#import "Tweet.h"
 
 static NSString * const baseURLString = @"https://api.twitter.com/";
 
@@ -26,7 +27,6 @@ static NSString * const baseURLString = @"https://api.twitter.com/";
 }
 
 - (instancetype)init {
-    
     NSURL *baseURL = [NSURL URLWithString:baseURLString];
     
     NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
@@ -42,8 +42,7 @@ static NSString * const baseURLString = @"https://api.twitter.com/";
     if ([[NSUserDefaults standardUserDefaults] stringForKey:@"consumer-secret"]) {
         secret = [[NSUserDefaults standardUserDefaults] stringForKey:@"consumer-secret"];
     }
-    
-//    NSLog(@"%@",self);
+
     self = [super initWithBaseURL:baseURL consumerKey:key consumerSecret:secret];
     
     if (self) {

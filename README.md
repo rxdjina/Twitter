@@ -2,7 +2,7 @@
 
 Twitter is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: 22 hours spent in total
+Time spent: 31 hours spent in total
 
 ## User Stories
 
@@ -11,11 +11,11 @@ The following **core** features are completed:
 **A user should**
 
 - [x] See an app icon in the home screen and a styled launch screen
-- [ ] Be able to log in using their Twitter account
+- [x] Be able to log in using their Twitter account
 - [ ] See at latest the latest 20 tweets for a Twitter account in a Table View
 - [ ] Be able to refresh data by pulling down on the Table View
 - [ ] Be able to like and retweet from their Timeline view
-- [ ] Only be able to access content if logged in
+- [x] Only be able to access content if logged in
 - [ ] Each tweet should display user profile picture, username, screen name, tweet text, timestamp, as well as buttons and labels for favorite, reply, and retweet counts.
 - [ ] Compose and post a tweet from a Compose Tweet view, launched from a Compose button on the Nav bar.
 - [ ] See Tweet details in a Details view
@@ -52,13 +52,14 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://submissions.us-east-1.linodeobjects.com/metau_ios/dydmCwIk.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [Kap](https://getkap.co/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+Difficulty displaying images
 
 ## Credits
 

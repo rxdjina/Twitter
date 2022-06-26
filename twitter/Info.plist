@@ -41,5 +41,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FranklinGothic.ttf</string>
+		<string>fgwo____.ttf</string>
+		<string>Franklin Gothic Condensed.ttf</string>
+		<string>FranklinGothicITALIC.ttf</string>
+		<string>FRANKGO.ttf</string>
+	</array>
 </dict>
 </plist>

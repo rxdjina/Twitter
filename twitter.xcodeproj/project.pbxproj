@@ -21,6 +21,11 @@
 		C20691FF28663F1A00B1F460 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C20691FE28663F1A00B1F460 /* User.m */; };
 		C20692022866407900B1F460 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = C20692012866407900B1F460 /* Tweet.m */; };
 		C20692052866444D00B1F460 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C20692042866444D00B1F460 /* TweetCell.m */; };
+		C206920C2868404C00B1F460 /* FranklinGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20692072868404C00B1F460 /* FranklinGothic.ttf */; };
+		C206920D2868404C00B1F460 /* fgwo____.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20692082868404C00B1F460 /* fgwo____.ttf */; };
+		C206920E2868404C00B1F460 /* Franklin Gothic Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20692092868404C00B1F460 /* Franklin Gothic Condensed.ttf */; };
+		C206920F2868404C00B1F460 /* FranklinGothicITALIC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C206920A2868404C00B1F460 /* FranklinGothicITALIC.ttf */; };
+		C20692102868404C00B1F460 /* FRANKGO.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C206920B2868404C00B1F460 /* FRANKGO.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +55,11 @@
 		C20692012866407900B1F460 /* Tweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		C20692032866444D00B1F460 /* TweetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
 		C20692042866444D00B1F460 /* TweetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
+		C20692072868404C00B1F460 /* FranklinGothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FranklinGothic.ttf; sourceTree = "<group>"; };
+		C20692082868404C00B1F460 /* fgwo____.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fgwo____.ttf"; sourceTree = "<group>"; };
+		C20692092868404C00B1F460 /* Franklin Gothic Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Franklin Gothic Condensed.ttf"; sourceTree = "<group>"; };
+		C206920A2868404C00B1F460 /* FranklinGothicITALIC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FranklinGothicITALIC.ttf; sourceTree = "<group>"; };
+		C206920B2868404C00B1F460 /* FRANKGO.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FRANKGO.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +85,7 @@
 		6AD278CC20BC4B950085BC29 = {
 			isa = PBXGroup;
 			children = (
+				C20692062868404C00B1F460 /* Fonts */,
 				6AD278D720BC4B950085BC29 /* twitter */,
 				6AD278D620BC4B950085BC29 /* Products */,
 				8D3B9352D6FC41D4058E12C5 /* Pods */,
@@ -160,6 +171,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C20692062868404C00B1F460 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C20692072868404C00B1F460 /* FranklinGothic.ttf */,
+				C20692082868404C00B1F460 /* fgwo____.ttf */,
+				C20692092868404C00B1F460 /* Franklin Gothic Condensed.ttf */,
+				C206920A2868404C00B1F460 /* FranklinGothicITALIC.ttf */,
+				C206920B2868404C00B1F460 /* FRANKGO.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -219,7 +242,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C20691FC28661F6700B1F460 /* Keys.plist in Resources */,
+				C206920C2868404C00B1F460 /* FranklinGothic.ttf in Resources */,
+				C206920E2868404C00B1F460 /* Franklin Gothic Condensed.ttf in Resources */,
 				6AD278E520BC4B970085BC29 /* LaunchScreen.storyboard in Resources */,
+				C206920D2868404C00B1F460 /* fgwo____.ttf in Resources */,
+				C206920F2868404C00B1F460 /* FranklinGothicITALIC.ttf in Resources */,
+				C20692102868404C00B1F460 /* FRANKGO.ttf in Resources */,
 				6AD278E220BC4B970085BC29 /* Assets.xcassets in Resources */,
 				6AD278E020BC4B950085BC29 /* Main.storyboard in Resources */,
 			);

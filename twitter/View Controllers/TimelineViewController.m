@@ -11,10 +11,11 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "TweetCell.h"
+#import "UIImage+AFNetworking.h"
 
 static const NSString* kFetchurl = @"";
 
-@interface TimelineViewController () <UITableViewDataSource>
+@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *arrayOfTweets;
@@ -28,6 +29,7 @@ static const NSString* kFetchurl = @"";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.dataSource = self;
     self.tableView.dataSource = self;
     
     // Get timeline
@@ -63,25 +65,30 @@ static const NSString* kFetchurl = @"";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
-    NSDictionary *tweet = self.arrayOfTweets[indexPath.row];
-    NSDictionary *user = tweet[@"user"];
     
-    // Create custom cell class -> Attach cell elements to custom class
-    cell.userNameLabel.text = user[@"name"]
-    cell.screenNameLabel.text = tweet[@"screen_name"];
-    cell.dateLabel.text = tweet[@"created_at"];
-    cell.tweetLabel.text = tweet[@"tweet"];
-    cell.replyCountLabel.text = tweet[@"reply_count"];
-    cell.retweetCountLabel.text = tweet[@"retweet_count"];
-    cell.favoriteCountLabel.text = tweet[@"favorite_count"];
+    Tweet *tweet = self.arrayOfTweets[indexPath.row];
+    User *user = tweet.user;
 
-//    cell.userProfilePicture.image = nil;
-//    
-//    NSString *URLString = cell.user.profilePicture;
-//    NSURL *url = [NSURL URLWithString:URLString];
-//    NSData *urlData = [NSData dataWithContentsOfURL:url];
+    cell.userNameLabel.text = user.name;
+    cell.screenNameLabel.text = [NSString stringWithFormat:@"@%@ · ", user.screenName];
+    cell.dateLabel.text = tweet.createdAtString;
+    cell.tweetLabel.text = tweet.text;
+    cell.replyCountLabel.text = @"0";
+    cell.retweetCountLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
+    cell.favoriteCountLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
+
+    NSString *URLString = tweet.user.profilePicture;
+    NSURL *url = [NSURL URLWithString:URLString];
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
+
+    cell.userProfilePicture.image = nil;
+    cell.userProfilePicture.image = [UIImage imageWithData:urlData];
     
-//    cell.backgroundColor = UIColor.redColor;
+    // Transformations
+    cell.dropDownImage.transform = CGAffineTransformMakeRotation(M_PI);
+    cell.userProfilePicture.layer.cornerRadius = 8.0;
+    cell.userProfilePicture.clipsToBounds = true;
+    
     return cell;
 }
 

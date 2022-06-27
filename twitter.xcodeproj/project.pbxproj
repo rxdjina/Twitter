@@ -26,6 +26,7 @@
 		C206920E2868404C00B1F460 /* Franklin Gothic Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20692092868404C00B1F460 /* Franklin Gothic Condensed.ttf */; };
 		C206920F2868404C00B1F460 /* FranklinGothicITALIC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C206920A2868404C00B1F460 /* FranklinGothicITALIC.ttf */; };
 		C20692102868404C00B1F460 /* FRANKGO.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C206920B2868404C00B1F460 /* FRANKGO.ttf */; };
+		C2069218286958C400B1F460 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2069217286958C400B1F460 /* ComposeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,8 @@
 		C20692092868404C00B1F460 /* Franklin Gothic Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Franklin Gothic Condensed.ttf"; sourceTree = "<group>"; };
 		C206920A2868404C00B1F460 /* FranklinGothicITALIC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FranklinGothicITALIC.ttf; sourceTree = "<group>"; };
 		C206920B2868404C00B1F460 /* FRANKGO.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FRANKGO.ttf; sourceTree = "<group>"; };
+		C2069216286958C400B1F460 /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		C2069217286958C400B1F460 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +161,8 @@
 				6AD2790520BCC0380085BC29 /* LoginViewController.m */,
 				6AD2790720BCC04D0085BC29 /* TimelineViewController.h */,
 				6AD2790820BCC04D0085BC29 /* TimelineViewController.m */,
+				C2069216286958C400B1F460 /* ComposeViewController.h */,
+				C2069217286958C400B1F460 /* ComposeViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 				C20692052866444D00B1F460 /* TweetCell.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
 				C20691FF28663F1A00B1F460 /* User.m in Sources */,
+				C2069218286958C400B1F460 /* ComposeViewController.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
 				C20692022866407900B1F460 /* Tweet.m in Sources */,
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,

@@ -12,10 +12,9 @@
 #import "LoginViewController.h"
 #import "TweetCell.h"
 #import "UIImage+AFNetworking.h"
+#import "ComposeViewController.h"
 
-static const NSString* kFetchurl = @"";
-
-@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TimelineViewController () <ComposeViewConrollerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *arrayOfTweets;
@@ -46,7 +45,7 @@ static const NSString* kFetchurl = @"";
 //                NSString *text = dictionary[@"text"];
 //                NSLog(@"%@", text);
 //            }
-            
+
             self.arrayOfTweets = tweets;
             [self.tableView reloadData];
         } else {
@@ -73,18 +72,6 @@ static const NSString* kFetchurl = @"";
         [self.refreshControl endRefreshing];
     }];
 }
-
-//- (void)beginRefresh:(UIRefreshControl *)refreshControl {
-//    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-//
-//    session.configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-////    NSURLRequest *request = ;
-//
-//    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//        [self.tableView reloadData];
-//        [refreshControl endRefreshing];
-//    }];
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -121,12 +108,11 @@ static const NSString* kFetchurl = @"";
     
     // Transformations
     cell.dropDownImage.transform = CGAffineTransformMakeRotation(M_PI);
-    cell.userProfilePicture.layer.cornerRadius = 8.0;
+    cell.userProfilePicture.layer.cornerRadius = cell.userProfilePicture.frame.size.width / 2;
     cell.userProfilePicture.clipsToBounds = true;
     
     return cell;
 }
-
 
 - (IBAction)didTapLogout:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -136,6 +122,16 @@ static const NSString* kFetchurl = @"";
     appDelegate.window.rootViewController = loginViewController;
     
     [[APIManager shared] logout];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+   UINavigationController *navigationController = [segue destinationViewController];
+   ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+   composeController.delegate = self;
+}
+
+- (void)didTweet:(nonnull Tweet *)tweet {
+    [self.tableView reloadData];
 }
 
 @end

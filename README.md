@@ -17,7 +17,7 @@ The following **core** features are completed:
 - [ ] Be able to like and retweet from their Timeline view
 - [x] Only be able to access content if logged in
 - [x] Each tweet should display user profile picture, username, screen name, tweet text, timestamp, as well as buttons and labels for favorite, reply, and retweet counts.
-- [ ] Compose and post a tweet from a Compose Tweet view, launched from a Compose button on the Nav bar.
+- [x] Compose and post a tweet from a Compose Tweet view, launched from a Compose button on the Nav bar.
 - [ ] See Tweet details in a Details view
 - [x] App should render consistently all views and subviews in recent iPhone models and all orientations
 

@@ -19,6 +19,7 @@ static const NSString* kFetchurl = @"";
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *arrayOfTweets;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 - (IBAction)didTapLogout:(id)sender;
 
@@ -31,6 +32,11 @@ static const NSString* kFetchurl = @"";
     
     self.tableView.dataSource = self;
     self.tableView.dataSource = self;
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(loadTweets) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+//    [self.tableView addSubview:self.refreshControl];
     
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
@@ -47,9 +53,38 @@ static const NSString* kFetchurl = @"";
             NSLog(@"Error getting home timeline: %@", error.localizedDescription);
         }
     }];
+    [self.refreshControl endRefreshing];
 }
 
+- (void)loadTweets {
+    [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
+        if (tweets) {
+            NSLog(@"Successfully loaded home timeline! :)");
+//            for (NSDictionary *dictionary in tweets) {
+//                NSString *text = dictionary[@"text"];
+//                NSLog(@"%@", text);
+//            }
+            
+            self.arrayOfTweets = tweets;
+        } else {
+            NSLog(@"Error getting home timeline: %@", error.localizedDescription);
+            [self.tableView reloadData];
+        }
+        [self.refreshControl endRefreshing];
+    }];
+}
 
+//- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+//
+//    session.configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+////    NSURLRequest *request = ;
+//
+//    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        [self.tableView reloadData];
+//        [refreshControl endRefreshing];
+//    }];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

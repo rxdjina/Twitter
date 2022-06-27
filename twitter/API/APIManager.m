@@ -59,9 +59,6 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         completion(nil, error); // Failure
     }];
-
-    
-    
 }
 
 @end

@@ -13,6 +13,7 @@
 #import "TweetCell.h"
 #import "UIImage+AFNetworking.h"
 #import "ComposeViewController.h"
+#import "DetailsViewController.h"
 
 @interface TimelineViewController () <ComposeViewConrollerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -59,10 +60,6 @@
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"Successfully loaded home timeline! :)");
-//            for (NSDictionary *dictionary in tweets) {
-//                NSString *text = dictionary[@"text"];
-//                NSLog(@"%@", text);
-//            }
             
             self.arrayOfTweets = tweets;
         } else {
@@ -75,7 +72,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 // Number of rows
@@ -95,7 +91,7 @@
     cell.screenNameLabel.text = [NSString stringWithFormat:@"@%@ · ", user.screenName];
     cell.dateLabel.text = tweet.createdAtString;
     cell.tweetLabel.text = tweet.text;
-    cell.replyCountLabel.text = @"0";
+    cell.replyCountLabel.text = [NSString stringWithFormat:@"%d", tweet.replyCount];
     cell.retweetCountLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
     cell.favoriteCountLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
 
@@ -125,9 +121,17 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-   UINavigationController *navigationController = [segue destinationViewController];
-   ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
-   composeController.delegate = self;
+    if ([segue.identifier  isEqual: @"composeTweetSegue"]) {
+       UINavigationController *navigationController = [segue destinationViewController];
+       ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+       composeController.delegate = self;
+    } else if ([segue.identifier  isEqual: @"detailSegue"]) {
+        NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
+        NSDictionary *dataToPass = self.arrayOfTweets[myIndexPath.row];
+        DetailsViewController *detailVC = [segue destinationViewController];
+        detailVC.detailTweet = dataToPass;
+        
+    }
 }
 
 - (void)didTweet:(nonnull Tweet *)tweet {

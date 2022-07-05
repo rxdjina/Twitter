@@ -1,8 +1,8 @@
 //
-//  TweetCellTableViewCell.h
+//  DetailsViewController.h
 //  twitter
 //
-//  Created by Rodjina Pierre Louis on 6/24/22.
+//  Created by Rodjina Pierre Louis on 7/5/22.
 //  Copyright © 2022 Emerson Malca. All rights reserved.
 //
 
@@ -11,24 +11,27 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TweetCell : UITableViewCell
+@interface DetailsViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIImageView *userProfilePicture;
 @property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *screenNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
-@property (strong, nonatomic) IBOutlet UILabel *tweetLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *dropDownImage;
-@property (strong, nonatomic) IBOutlet UILabel *replyCountLabel;
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property (nonatomic, strong) IBOutlet UILabel *tweetLabel;
+
 @property (strong, nonatomic) IBOutlet UILabel *retweetCountLabel;
 @property (strong, nonatomic) IBOutlet UILabel *favoriteCountLabel;
+@property (strong, nonatomic) IBOutlet UILabel *replyCountLabel;
 
-@property (nonatomic, strong) Tweet *tweet;
-@property (nonatomic, strong) User *user;
+//@property (nonatomic, strong) Tweet *tweet;
+//@property (nonatomic, strong) User *user;
 
 @property (strong, nonatomic) IBOutlet UIImageView *favoriteImage;
 @property (strong, nonatomic) IBOutlet UIImageView *retweetImage;
 @property (strong, nonatomic) IBOutlet UIButton *favoriteButton;
+
+@property (nonatomic, strong) NSDictionary *detailTweet;
 
 @end
 

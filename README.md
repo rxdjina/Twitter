@@ -2,7 +2,7 @@
 
 Twitter is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: 31 hours spent in total
+Time spent: 43 hours spent in total
 
 ## User Stories
 
@@ -25,13 +25,13 @@ The following **stretch** features are implemented:
 
 **A user could**
 
-- [ ] Be able to **unlike** or **un-retweet** by tapping a liked or retweeted Tweet button, respectively. (Doing so will decrement the count for each)
+- [x] Be able to **unlike** or **un-retweet** by tapping a liked or retweeted Tweet button, respectively. (Doing so will decrement the count for each)
 - [ ] Click on links that appear in Tweets
 - [ ] See embedded media in Tweets that contain images or videos
 - [ ] Reply to any Tweet (**2 points**)
   - Replies should be prefixed with the username
   - The `reply_id` should be set when posting the tweet
-- [ ] See a character count when composing a Tweet (as well as a warning) (280 characters) (**1 point**)
+- [x] See a character count when composing a Tweet (as well as a warning) (280 characters) (**1 point**)
 - [ ] Load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client
 - [ ] Click on a Profile image to reveal another user's profile page, including:
   - Header view: picture and tagline
@@ -41,25 +41,29 @@ The following **stretch** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] All text stops once tweet character limit is reached.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Implementing a comments/reply section
+2. How to implement embedded videos
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-[Video Walkthrough](https://submissions.us-east-1.linodeobjects.com/metau_ios/dydmCwIk.gif)
+[Video Walkthrough](https://submissions.us-east-1.linodeobjects.com/metau_ios/98Ydekq-.gif)
 
 GIF created with [Kap](https://getkap.co/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
-Difficulty displaying images
+Technical Issues:
+- None of my API Keys, nor the ones provided within the course guide or instructor keys worked the entire first week this project was assigned. Every key provided returned the same error code. I was not able to official get started until that Friday morning, and worked on everything throughout the weekend
+
+Personal Challenges:
+- I found it challenging to implement the favoriting and retweeting features. 
 
 ## Credits
 

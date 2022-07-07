@@ -14,6 +14,7 @@
 #import "UIImage+AFNetworking.h"
 #import "ComposeViewController.h"
 #import "DetailsViewController.h"
+#import "DateTools.h"
 
 @interface TimelineViewController () <ComposeViewConrollerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -36,16 +37,11 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(loadTweets) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
-//    [self.tableView addSubview:self.refreshControl];
     
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"Successfully loaded home timeline! :)");
-//            for (NSDictionary *dictionary in tweets) {
-//                NSString *text = dictionary[@"text"];
-//                NSLog(@"%@", text);
-//            }
 
             self.arrayOfTweets = tweets;
             [self.tableView reloadData];
@@ -89,12 +85,27 @@
 
     cell.userNameLabel.text = user.name;
     cell.screenNameLabel.text = [NSString stringWithFormat:@"@%@ · ", user.screenName];
-    cell.dateLabel.text = tweet.createdAtString;
     cell.tweetLabel.text = tweet.text;
     cell.replyCountLabel.text = [NSString stringWithFormat:@"%d", tweet.replyCount];
     cell.retweetCountLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
     cell.favoriteCountLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
+    
+    // Date Label
+    NSString *dateString = [NSString stringWithFormat:@"%@", tweet.createdAt];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"E MMM d HH:mm:ss Z y"];
+    NSDate *dateFromString = [dateFormatter dateFromString:dateString];
 
+    cell.dateLabel.text = [dateFromString shortTimeAgoSinceNow];
+
+    // Favorites
+    if (tweet.favorited){
+        cell.favoriteImage.image = [UIImage imageNamed:@"favor-icon-red.png"];
+    }
+    if (tweet.retweeted){
+        cell.retweetImage.image = [UIImage imageNamed:@"retweet-icon-green.png"];
+    }
+    
     NSString *URLString = tweet.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
@@ -130,7 +141,6 @@
         NSDictionary *dataToPass = self.arrayOfTweets[myIndexPath.row];
         DetailsViewController *detailVC = [segue destinationViewController];
         detailVC.detailTweet = dataToPass;
-        
     }
 }
 

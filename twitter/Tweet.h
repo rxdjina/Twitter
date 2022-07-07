@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL retweeted; // Configure retweet button
 @property (nonatomic) int replyCount; // Update reply count label
 @property (nonatomic, strong) User *user; // Contains Tweet author's name, screenname, etc.
+@property (nonatomic) int quoteCount;
+@property (nonatomic, strong) NSDate *createdAt;
+
 @property (nonatomic, strong) NSString *createdAtString; // Display date
 
 @property (nonatomic, strong) User *retweetedByUser; // If the tweet is a retweet, this will be the user who retweeted

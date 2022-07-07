@@ -28,7 +28,8 @@
         self.retweetCount = [dictionary[@"retweet_count"] intValue];
         self.retweeted = [dictionary[@"retweeted"] boolValue];
         self.replyCount = [dictionary[@"public_metrics"][@"reply_count"] intValue];
-
+        self.quoteCount = [dictionary[@"public_metrics"][@"quote_count"] intValue];
+        self.createdAt = dictionary[@"created_at"];
         // User Initialization
         NSDictionary *user = dictionary[@"user"];
         self.user = [[User alloc] initWithDictionary:user];

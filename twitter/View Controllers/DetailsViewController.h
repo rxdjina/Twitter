@@ -19,19 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (nonatomic, strong) IBOutlet UILabel *tweetLabel;
-
 @property (strong, nonatomic) IBOutlet UILabel *retweetCountLabel;
 @property (strong, nonatomic) IBOutlet UILabel *favoriteCountLabel;
-@property (strong, nonatomic) IBOutlet UILabel *replyCountLabel;
-
-//@property (nonatomic, strong) Tweet *tweet;
-//@property (nonatomic, strong) User *user;
-
+@property (strong, nonatomic) IBOutlet UILabel *quoteTweetCountLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *favoriteImage;
 @property (strong, nonatomic) IBOutlet UIImageView *retweetImage;
-@property (strong, nonatomic) IBOutlet UIButton *favoriteButton;
 
-@property (nonatomic, strong) NSDictionary *detailTweet;
+@property (nonatomic, strong) Tweet *detailTweet;
 
 @end
 

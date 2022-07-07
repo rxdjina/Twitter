@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *closeButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *tweetButton;
+@property (strong, nonatomic) IBOutlet UILabel *characterCountLabel;
 
 @property (strong, nonatomic) NSString *userInput;
 
@@ -34,20 +35,31 @@
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
+    NSInteger length = [textView.text length];
+    
     if (self.textView.text.length == 0) {
         self.textView.textColor = [UIColor lightGrayColor];
         self.textView.text = @"What's on your mind?";
         [self.textView resignFirstResponder];
+        self.characterCountLabel.text = [NSString stringWithFormat:@"%ld Characters", (long)length];
     }
+    
+    self.characterCountLabel.text = [NSString stringWithFormat:@"%ld Characters", (long)length];
+    
     self.userInput = textView.text;
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
     if (self.textView.text.length == 0) {
         self.textView.textColor = [UIColor lightGrayColor];
-        self.textView.text = @"Sample Text";
+        self.textView.text = @"What's on your mind?";
         [self.textView resignFirstResponder];
     }
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    return textView.text.length + (text.length - range.length) <= 280;
 }
 
 - (IBAction)buttonPressed:(id)sender {
